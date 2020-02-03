@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Студаки МТУСИ</title>
+</head>
+
+<body class="bg-dark text-white">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 mx-auto">
+        <div class="input-group input-group-lg">
+          <input type="text" class="form-control" id="search-field" placeholder="Введите ФИО" aria-describedby="button-search">
+          <div class="input-group-append">
+            <button class="btn btn-success" type="button" id="button-search">Поиск</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center ans-box">
+      <div class="col-12 mx-auto">
+        <div class="jumbotron bg-white text-dark" id="jumbotron">
+          <div class="d-flex">
+            <div class="spinner-grow mx-auto" role="status">
+              <span class="sr-only">Загрузка...</span>
+            </div>
+          </div>
+          <div class="text-center">
+            <h5 class="font-400">Поиск студенческого по фамилии, имени или отчеству</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <!-- Optional JavaScript -->
+  <script src="js/bd.js"></script>
+  <script>
+  $("#button-search").click(()=>{$("#jumbotron").html(`<div class="d-flex" style=""><div class="spinner-grow mx-auto" role="status"><span class="sr-only">Загрузка...</span>`);let searchStr=$("#search-field").val();let readyList='';for(var i=0;i<data.studDocs.length;i++){if(data.studDocs[i].name.includes(searchStr)){readyList=readyList+`<h5 class="">${data.studDocs[i].studNum} <small class="text-muted">${data.studDocs[i].name}</small></h5>`}}if(readyList!=''){$("#jumbotron").html(readyList)}else{$("#jumbotron").html(`😥 Ничего не найдено.`)}})
+  </script>
+</body>
+
+</html>
