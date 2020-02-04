@@ -7,3 +7,6 @@
 .font-400{
   font-weight: 400;
 }
+.alert-link{
+  text-decoration: underline;
+}
