@@ -109,16 +109,16 @@
         return matches ? decodeURIComponent(matches[1]) : undefined
       }
       if (getCookie(`alert`) == `allreadyread`) {
-        $('#alert').css('display', 'none')
+        document.getElementById('alert').style.display = 'none'
       }
-      $('#close-alert').click(() => {
+      document.getElementById('close-alert').onclick = () => {
         document.cookie = 'alert=allreadyread'
-      })
-      $('#button-search').click(() => {
-        $('#jumbotron').html(
-          `<div class="d-flex" style=""><div class="spinner-grow mx-auto" role="status"><span class="sr-only">Загрузка...</span>`
-        )
-        let searchStr = $('#search-field').val()
+      }
+      document.getElementById('button-search').onclick = () => {
+        document.getElementById(
+          'jumbotron'
+        ).innerHTML = `<div class="d-flex" style=""><div class="spinner-grow mx-auto" role="status"><span class="sr-only">Загрузка...</span>`
+        let searchStr = document.getElementById('search-field').value
         let readyList = ''
         for (var i = 0; i < data.studDocs.length; i++) {
           if (data.studDocs[i].name.includes(searchStr)) {
@@ -128,11 +128,13 @@
           }
         }
         if (readyList != '') {
-          $('#jumbotron').html(readyList)
+          document.getElementById('jumbotron').innerHTML = readyList
         } else {
-          $('#jumbotron').html(`😥 Ничего не найдено.`)
+          document.getElementById(
+            'jumbotron'
+          ).innerText = `😥 Ничего не найдено.`
         }
-      })
+      }
     </script>
   </body>
 </html>
